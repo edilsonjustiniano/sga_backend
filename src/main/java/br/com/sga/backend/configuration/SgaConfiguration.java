@@ -1,17 +1,30 @@
 package br.com.sga.backend.configuration;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import java.util.Properties;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 
 import br.com.sga.backend.api.StudentService;
 import br.com.sga.backend.api.impl.StudentServiceImpl;
 import br.com.sga.backend.business.StudentBusiness;
-import br.com.sga.backend.dao.HibernateUtil;
 import br.com.sga.backend.dao.StudentDao;
 import br.com.sga.backend.validator.StudentValidator;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 
 @Configuration
+@EnableTransactionManagement
+@Import({SgaDatabaseConfiguration.class})
 @ComponentScan(value = "br.com.sga.backend.api.impl")
 public class SgaConfiguration {
 
@@ -22,7 +35,7 @@ public class SgaConfiguration {
 	
 	@Bean
 	public StudentDao studentDao(){
-		return new StudentDao(HibernateUtil.getEntitymanager());
+		return new StudentDao();
 	}
 	
 	@Bean
@@ -34,4 +47,5 @@ public class SgaConfiguration {
 	public StudentBusiness studentBusiness(StudentDao studentDao){
 		return new StudentBusiness(studentDao);
 	}
+
 }

@@ -18,7 +18,7 @@ import br.com.sga.backend.model.Student;
 import br.com.sga.backend.validator.StudentValidator;
 
 @Component
-@Path("/student")
+@Path("/students")
 public class StudentServiceImpl implements StudentService{
 	
 	@Autowired
@@ -28,7 +28,6 @@ public class StudentServiceImpl implements StudentService{
 	private StudentBusiness studentBusiness;
 
 	@GET
-	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Student> listStudents() {
 		studentValidator.validateStudy();

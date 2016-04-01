@@ -1,38 +1,30 @@
 package br.com.sga.backend.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+@Repository
 public class GenericDao<T, PK> {
 
-	protected EntityManager em;
-
-	public GenericDao(EntityManager em) {
-		this.em = em;
-	}
+	@PersistenceContext
+	private EntityManager em;
 
 	public void save(T entity) {
-
-		em.getTransaction().begin();
 		em.persist(entity);
-		em.getTransaction().commit();
 	}
 
 	public void update(T entity) {
-
-		em.getTransaction().begin();
 		em.merge(entity);
-		em.getTransaction().commit();
 	}
 
 	public void delete(T entity) {
-
-		em.getTransaction().begin();
 		em.remove(entity);
-		em.getTransaction().commit();
 	}
 
 	public T getById(PK id) {

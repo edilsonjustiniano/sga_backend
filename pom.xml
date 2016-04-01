@@ -14,7 +14,12 @@
 		<version.spring>4.2.4.RELEASE</version.spring>
 		<groupId.jersey>com.sun.jersey</groupId.jersey>
 		<version.jersey>1.19</version.jersey>
+		<groupId.hibernate>org.hibernate</groupId.hibernate>
+		<version.hibernate>3.5.6-Final</version.hibernate>
+		<groupId.sl4j>org.slf4j</groupId.sl4j>
+		<version.sl4j>1.7.19</version.sl4j>
 	</properties>
+
 	<dependencies>
 
 		<!-- Jersey -->
@@ -23,17 +28,20 @@
 			<artifactId>jersey-spring3</artifactId>
 			<version>2.22.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>2.22.1</version>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-server</artifactId>
 			<version>2.22.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
@@ -65,6 +73,13 @@
 			<version>${version.spring}</version>
 		</dependency>
 
+		<!-- Spring ORM -->
+		<dependency>
+			<groupId>${groupId.spring}</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>asm</groupId>
 			<artifactId>asm</artifactId>
@@ -76,20 +91,6 @@
 			<artifactId>org.apache.servicemix.specs.jsr311-api-1.0</artifactId>
 			<version>2.5.0</version>
 		</dependency>
-
-		<!-- Tests -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
-		</dependency>
-
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -113,30 +114,41 @@
 
 		<!-- Hibernate -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>${groupId.hibernate}</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.6-Final</version>
+			<version>${version.hibernate}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>${groupId.hibernate}</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>3.2.0.Final</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>${groupId.hibernate}</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>3.5.6-Final</version>
+			<version>${version.hibernate}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>${groupId.hibernate}</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.5.6-Final</version>
+			<version>${version.hibernate}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>${groupId.hibernate}</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${version.hibernate}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.1.Final</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
@@ -145,14 +157,15 @@
 
 		<!-- SLF4j -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
+			<groupId>${groupId.sl4j}</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.19</version>
+			<version>${version.sl4j}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.slf4j</groupId>
+			<groupId>${groupId.sl4j}</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.19</version>
+			<version>${version.sl4j}</version>
 		</dependency>
 
 		<!-- MySQL -->
@@ -161,6 +174,20 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 		</dependency>
+
+		<!-- Tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
